@@ -1,6 +1,6 @@
 using {cap.start as my} from '../db/schema';
 
-@requires: 'authenticate-user'
+@requires: 'authenticated-user'
 service TaskService @(path: '/task') {
 
     @odata.draft.enabled

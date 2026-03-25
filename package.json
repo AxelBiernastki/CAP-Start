@@ -16,7 +16,25 @@
   },
   "cds": {
     "requires": {
-      "auth": "mocked"
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "Axel": {
+            "password": "123",
+            "roles": [
+              "authenticated-user",
+              "User"
+            ]
+          },
+          "Admin": {
+            "password": "admin123",
+            "roles": [
+              "authenticated-user",
+              "CapStartAdmin"
+            ]
+          }
+        }
+      }
     }
   },
   "scripts": {
