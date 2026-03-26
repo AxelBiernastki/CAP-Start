@@ -7,13 +7,17 @@
     "express": "^4"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2",
-    "@cap-js/cds-types": "^0.15.0",
-    "@types/node": "^24.0.0",
-    "tsx": "^4",
-    "typescript": "^5",
+    "@cap-js/cds-test": "^0.4.1",
     "@cap-js/cds-typer": ">=0.1",
-    "cds-plugin-ui5": "^0.13.0"
+    "@cap-js/cds-types": "^0.15.0",
+    "@cap-js/sqlite": "^2",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.0",
+    "cds-plugin-ui5": "^0.13.0",
+    "jest": "^30.3.0",
+    "ts-jest": "^29.4.6",
+    "tsx": "^4",
+    "typescript": "^5"
   },
   "cds": {
     "requires": {
@@ -40,6 +44,9 @@
   },
   "scripts": {
     "start": "cds-serve",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
+    "test:backend": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
     "watch-cap-start": "cds watch --open cap.start.capstart/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
