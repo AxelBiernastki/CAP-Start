@@ -1,5 +1,5 @@
 {
-  "name": "CAP-Start",
+  "name": "tart",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "dependencies": {
@@ -12,7 +12,8 @@
     "@types/node": "^24.0.0",
     "tsx": "^4",
     "typescript": "^5",
-    "@cap-js/cds-typer": ">=0.1"
+    "@cap-js/cds-typer": ">=0.1",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "cds": {
     "requires": {
@@ -38,10 +39,17 @@
     }
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-cap-start": "cds watch --open cap.start.capstart/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "imports": {
     "#cds-models/*": "./@cds-models/*/index.js"
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/cap-start"
+  ]
 }
