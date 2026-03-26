@@ -6,22 +6,24 @@ using {
 } from '@sap/cds/common';
 
 type TaskStatus : String enum {
-    OPEN;
-    IN_PROGRESS;
-    DONE;
+    Aberta;
+    Fazendo;
+    Concluida;
 }
 
 type TaskPriority : String enum {
-    LOW;
-    MEDIUM;
-    HIGH;
+    Baixa;
+    Média;
+    Alta;
 }
 
 entity Tasks : cuid, managed {
     title       : localized String(111);
     description : localized String(1000);
-    status      : TaskStatus default 'OPEN';
-    priority    : TaskPriority default 'MEDIUM';
+    @assert.range: true
+    status      : TaskStatus default 'Aberta';
+    @assert.range: true
+    priority    : TaskPriority default 'Média';
     dueDate     : Date;
     isArchived  : Boolean default false;
 }

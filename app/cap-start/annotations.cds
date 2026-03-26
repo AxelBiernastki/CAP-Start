@@ -14,8 +14,8 @@ annotate service.Tasks with {
 annotate service.Tasks with @(
 
     UI.LineItem: [
-        { Value: title, ![@HTML5.CssDefaults]: { width: '15rem' } },
-        { Value: description, ![@HTML5.CssDefaults]: { width: '30rem' } },
+        { Value: title, ![@HTML5.CssDefaults]: { width: '10rem' } },
+        { Value: description, ![@HTML5.CssDefaults]: { width: '20rem' } },
         { Value: status, ![@HTML5.CssDefaults]: { width: '10rem' } },
         { Value: priority, ![@HTML5.CssDefaults]: { width: '8rem' } },
         { Value: dueDate, ![@HTML5.CssDefaults]: { width: '12rem' } },

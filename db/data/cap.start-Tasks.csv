@@ -1,4 +1,4 @@
 ID,title,description,status,priority,dueDate,isArchived
-11111111-1111-1111-1111-111111111111,Preparar kickoff,Organizar estrutura inicial do projeto,OPEN,HIGH,2026-03-30,false
-22222222-2222-2222-2222-222222222222,Modelar entidade Tasks,Criar schema inicial com CAP,IN_PROGRESS,MEDIUM,2026-04-02,false
-33333333-3333-3333-3333-333333333333,Validar serviço,Subir aplicação e testar endpoints,DONE,LOW,2026-04-05,false
+11111111-1111-1111-1111-111111111111,Preparar kickoff,Organizar estrutura inicial do projeto,Aberta,Alta,2026-03-30,false
+22222222-2222-2222-2222-222222222222,Modelar entidade Tasks,Criar schema inicial com CAP,Fazendo,Média,2026-04-02,false
+33333333-3333-3333-3333-333333333333,Validar serviço,Subir aplicação e testar endpoints,Concluida,Baixa,2026-04-05,false
