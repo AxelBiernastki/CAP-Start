@@ -13,35 +13,79 @@ annotate service.Tasks with {
 
 annotate service.Tasks with @(
 
-    UI.LineItem: [
-        { Value: title, ![@HTML5.CssDefaults]: { width: '10rem' } },
-        { Value: description, ![@HTML5.CssDefaults]: { width: '20rem' } },
-        { Value: status, ![@HTML5.CssDefaults]: { width: '10rem' } },
-        { Value: priority, ![@HTML5.CssDefaults]: { width: '8rem' } },
-        { Value: dueDate, ![@HTML5.CssDefaults]: { width: '12rem' } },
-        { Value: createdBy, ![@HTML5.CssDefaults]: { width: '12rem' } },
-        { Value: modifiedAt, ![@HTML5.CssDefaults]: { width: '12rem' } }
+    UI.LineItem           : [
+        {
+            Value                : title,
+            ![@HTML5.CssDefaults]: {width: '10rem'}
+        },
+        {
+            Value                : description,
+            ![@HTML5.CssDefaults]: {width: '20rem'}
+        },
+        {
+            Value                : status,
+            ![@HTML5.CssDefaults]: {width: '10rem'}
+        },
+        {
+            Value                : priority,
+            ![@HTML5.CssDefaults]: {width: '8rem'}
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'TaskService.advanceToInProgress',
+            Label : '{i18n>Iniciar}',
+            Inline: true
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'TaskService.advanceToDone',
+            Label : '{i18n>Concluir}',
+            Inline: true
+        },
+        {
+            Value                : dueDate,
+            ![@HTML5.CssDefaults]: {width: '12rem'}
+        },
+        {
+            Value                : createdBy,
+            ![@HTML5.CssDefaults]: {width: '12rem'}
+        },
+        {
+            Value                : modifiedAt,
+            ![@HTML5.CssDefaults]: {width: '12rem'}
+        }
     ],
 
-    UI.FieldGroup #General: {
-        Data: [
-            { Value: title },
-            { Value: description },
-            { Value: status },
-            { Value: priority },
-            { Value: dueDate },
-            { Value: isArchived }
-        ]
-    },
+    UI.FieldGroup #General: {Data: [
+        {Value: title},
+        {Value: description},
+        {Value: status},
+        {Value: priority},
+        {Value: dueDate},
+        {Value: isArchived}
+    ]},
 
-    UI.HeaderInfo: {
+    UI.Identification     : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'TaskService.advanceToInProgress',
+            Label : '{i18n>Iniciar}'
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action: 'TaskService.advanceToDone',
+            Label : '{i18n>Concluir}'
+        }
+    ],
+
+    UI.HeaderInfo         : {
         TypeName      : '{i18n>Task}',
         TypeNamePlural: '{i18n>Tasks}',
-        Title         : { Value: title },
-        Description   : { Value: description }
+        Title         : {Value: title},
+        Description   : {Value: description}
     },
 
-    UI.Facets: [{
+    UI.Facets             : [{
         $Type : 'UI.ReferenceFacet',
         Label : '{i18n>GeneralInformation}',
         Target: '@UI.FieldGroup#General'

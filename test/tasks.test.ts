@@ -220,4 +220,54 @@ describe('CAP-Start backend - Task draft flow', () => {
       404
     )
   })
+
+  test('11) Avança tarefa de Aberta para Fazendo', async () => {
+  const id = await createAndActivateTaskAsAxel({
+    title: unique('Task para advanceToInProgress'),
+    status: 'Aberta',
+    isArchived: false
+  })
+
+  const response = await POST(
+    `/task/Tasks(ID=${id},IsActiveEntity=true)/TaskService.advanceToInProgress`,
+    {},
+    axel
+  )
+
+  expect([200, 201, 204]).to.include(response.status)
+
+  const readBack = await GET(`/task/Tasks(ID=${id},IsActiveEntity=true)`)
+  expect(readBack.status).to.equal(200)
+  expect(readBack.data.ID).to.equal(id)
+  expect(readBack.data.status).to.equal('Fazendo')
+})
+
+test('12) Avança tarefa de Fazendo para Concluida', async () => {
+  const id = await createAndActivateTaskAsAxel({
+    title: unique('Task para advanceToDone'),
+    status: 'Aberta',
+    isArchived: false
+  })
+
+  const inProgress = await POST(
+    `/task/Tasks(ID=${id},IsActiveEntity=true)/TaskService.advanceToInProgress`,
+    {},
+    axel
+  )
+
+  expect([200, 201, 204]).to.include(inProgress.status)
+
+  const response = await POST(
+    `/task/Tasks(ID=${id},IsActiveEntity=true)/TaskService.advanceToDone`,
+    {},
+    axel
+  )
+
+  expect([200, 201, 204]).to.include(response.status)
+
+  const readBack = await GET(`/task/Tasks(ID=${id},IsActiveEntity=true)`)
+  expect(readBack.status).to.equal(200)
+  expect(readBack.data.ID).to.equal(id)
+  expect(readBack.data.status).to.equal('Concluida')
+})
 })

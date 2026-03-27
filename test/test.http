@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:4004
-@taskId = 3ded72b5-245d-4840-8ee6-d05275668f49
+@taskId = 1af5b218-8f84-4df6-9b66-a9ab56740ceb
 @user = Basic QXhlbDoxMjM=
 
 @admin = Basic QWRtaW46YWRtaW4xMjM=
@@ -74,4 +74,17 @@ Accept: application/json
 ### 10) Deleta tarefa salva (apenas admins podem deletar)
 DELETE {{baseUrl}}/task/Tasks(ID={{taskId}},IsActiveEntity=false)
 Authorization: {{user}}
+Accept: application/json
+
+### 11) advanceToInProgress
+POST {{baseUrl}}/task/Tasks(ID={{taskId}},IsActiveEntity=true)/TaskService.advanceToInProgress
+Authorization: {{user}}
+Content-Type: application/json
+Accept: application/json
+
+
+### 12) advanceToDone
+POST {{baseUrl}}/task/Tasks(ID={{taskId}},IsActiveEntity=true)/TaskService.advanceToDone
+Authorization: {{user}}
+Content-Type: application/json
 Accept: application/json
