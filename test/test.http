@@ -1,59 +1,77 @@
 @baseUrl = http://localhost:4004
-@taskId = 5865185b-721d-4840-a83e-7c9559c65709
+@taskId = 3ded72b5-245d-4840-8ee6-d05275668f49
 @user = Basic QXhlbDoxMjM=
 
 @admin = Basic QWRtaW46YWRtaW4xMjM=
 
-### 1) exibe drafts
+### 1) Exibe os drafts passando usuário, caso não haja drafts para aquele usuário exibe um array vazio
 GET {{baseUrl}}/task/Tasks?$filter=IsActiveEntity eq false
-Authorization: 
+Authorization: {{user}}
 Content-Type: application/json
 
-### 2) exibe salvos
+### 2) Exibe a lista dos dados criados (salvos depois do draft) e não precisa estar autenticado, qualquer um pode ver 
 GET {{baseUrl}}/task/Tasks?$filter=IsActiveEntity eq true
 
-### 3) cria draft
+### 3) Cria um draft (deve estar com usuário logado para poder criar)
 POST {{baseUrl}}/task/Tasks
-Authorization: 
+Authorization: {{user}}
 Content-Type: application/json
 
 {
-  "title": "Teste 1",
+  "title": "Criado para teste",
+  "description": "Criada via Jest",
   "isArchived": false
 }
 
-### 4) edita o draft
+### 4) Cria um draft sem título (deve estar com usuário logado para poder criar)
+POST {{baseUrl}}/task/Tasks
+Authorization: {{user}}
+Content-Type: application/json
+
+{
+  "title": "",
+  "description": "Criada via Jest",
+  "isArchived": false
+}
+
+### 5) Consegue editar o draft (deve estar com o usuário correto logado e passar o ID do draft)
 PATCH {{baseUrl}}/task/Tasks(ID={{taskId}},IsActiveEntity=false)
-Authorization: 
+Authorization: {{user}}
 Content-Type: application/json
 
 {
-  "title": "Atualizado pelo Axel",
+  "title": "Draft atualizado",
   "isArchived": false
 }
 
-### 5) salva/ativa o draft
+### 6) Salva o draft (deve estar como usuário logado e passar o ID do draft) além de que é obrigatório ter título: draft com titulo vazio nao passa e draft com titulo passa ok
 POST {{baseUrl}}/task/Tasks(ID={{taskId}},IsActiveEntity=false)/draftActivate
-Authorization: 
+Authorization: {{user}}
 Content-Type: application/json
 Accept: application/json
 
-### 6) edita o salvo
+### 7) Salva o draft (deve estar como usuário logado e passar o ID do draft) além de que é obrigatório ter título
+POST {{baseUrl}}/task/Tasks(ID={{taskId}},IsActiveEntity=false)/draftActivate
+Authorization: {{user}}
+Content-Type: application/json
+Accept: application/json
+
+### 8) Edita a tarefa salva passando o ID e deve estar com usuário correto
 PATCH {{baseUrl}}/task/Tasks(ID={{taskId}},IsActiveEntity=true)
-Authorization: 
+Authorization: {{user}}
 Content-Type: application/json
 
 {
-  "title": "Atualizado pelo Axel",
+  "title": "Tarefa atualizada",
   "isArchived": false
 }
 
-### 5) deleta salvo (apenas admins podem deletar)
+### 9) Deleta draft, apenas admin pode deletar (deve dar erro pois não é possivel deletar um draft q ainda nao foi salvo)
 DELETE {{baseUrl}}/task/Tasks(ID={{taskId}},IsActiveEntity=true)
-Authorization: {{admin}}
+Authorization: {{user}}
 Accept: application/json
 
-### 6) deleta draft (apenas admins podem deletar)
+### 10) Deleta tarefa salva (apenas admins podem deletar)
 DELETE {{baseUrl}}/task/Tasks(ID={{taskId}},IsActiveEntity=false)
-Authorization: {{admin}}
+Authorization: {{user}}
 Accept: application/json
