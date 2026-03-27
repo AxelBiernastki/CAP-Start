@@ -1,22 +1,23 @@
 {
   "compilerOptions": {
-    "isolatedModules": true,
-    "target": "ESNext",
+    "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "allowJs": true,
-    "paths": {
-      "@sap/cds": [
-        "./node_modules/@cap-js/cds-types"
-      ],
-      "#cds-models/*": [
-        "./@cds-models/*"
-      ]
-    }
-  }
+    "isolatedModules": true,
+    "allowJs": false
+  },
+  "include": [
+    "srv/**/*.ts",
+    "db/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "gen",
+    "app"
+  ]
 }
