@@ -1,5 +1,17 @@
 # CAP Start
 
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://cap.cloud.sap/docs/logos/cap.svg" width="55" alt="CAP-Icon"/></a></td>
+      <td><img src="https://ui5.sap.com/resources/sap/ui/documentation/sdk/images/sap-ui5-logo.svg" width="50" alt="UI5-Icon"/></a></td>
+    <td><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" width="60" alt="NodeJs-Icon"/></a></td>
+    <td><img width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg" alt="SQLite-Icon"/></td>
+    <td><img width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-plain.svg" alt="TypeScript-Icon"/></td>
+    </tr>
+  </table>
+</div>
+
 > Aplicação full stack desenvolvida para estudo de conceitos básicos com **SAP CAP**, **CDS**, **SQLite**, **TypeScript**, **UI5 / Fiori Elements**, **Jest** e **OPA5**.
 
 ## Principais funcionalidades
@@ -152,38 +164,32 @@ A estrutura do projeto também inclui testes de interface com:
 - QUnit
   
 ### Como executar
+
 1. Clonar o repositório
 ```txt
-git clone <url-do-repositorio>
-cd <nome-do-projeto>
+git clone https://github.com/AxelBiernastki/CAP-Start.git
+cd CAP-Start
 ```
+
 2. Instalar as dependências
 ```txt
 npm install
 ```
+
 3. Executar a aplicação
 ```txt
 cds watch
 ```
-Ou, para subir apenas o CAP:
-```txt
-npm run start
-```
 
 ### Como executar os testes
+
 #### Testes de backend
 ```txt
 cds test
 ```
-ou
-```txt
-npm run test:backend
-```
-#### Testes em modo watch
-```txt
-npm run test:watch
-```
+
 ### Usuários mockados para testes
+
 #### Usuário comum
 ```txt
 usuário: Axel
